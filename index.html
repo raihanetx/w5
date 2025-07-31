@@ -707,9 +707,9 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .modern-review-section {
     width: 100%;
     max-width: 850px;
-    margin: 2rem auto;
-    padding: 0; /* Removed padding */
-    background-color: transparent; /* Removed background */
+    margin: 1rem auto;
+    padding: 0;
+    background-color: transparent;
     border-radius: 16px;
 }
 
@@ -724,21 +724,21 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 .modern-reviews-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Reduced gap */
-    margin-bottom: 2rem; /* Reduced margin */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .modern-review-card {
     background-color: var(--background-color);
-    border: 1px solid #e9e9e9;
+    border: 2px solid #e0e0e0;
     border-radius: 12px;
-    padding: 1rem; /* Reduced padding */
+    padding: 0.75rem;
 }
 
 .modern-review-header {
     display: flex;
     align-items: center;
-    margin-bottom: 0.75rem; /* Reduced margin */
+    margin-bottom: 0.5rem;
     gap: 1rem;
 }
 
@@ -771,7 +771,6 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 }
 
 .modern-review-meta {
-    /* This class is not directly used for the new layout in the review card, but we can leave it for other potential uses. */
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -781,13 +780,13 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 .modern-review-rating {
     font-size: 1rem;
     color: #FFC107;
-    margin-bottom: 0.75rem; /* Added margin */
+    margin-bottom: 0.25rem;
 }
 
 .modern-review-date {
     font-size: 0.85rem;
     color: #777;
-    margin-top: 0.1rem; /* Reduced gap from name */
+    margin-bottom: 0.5rem;
 }
 
 .modern-review-comment {
@@ -812,7 +811,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 }
 
 .modern-review-form .form-group {
-    margin-bottom: 0.75rem; /* Reduced margin */
+    margin-bottom: 0.25rem;
 }
 
 .modern-review-form label {
@@ -892,8 +891,8 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     display: block;
-    width: 100%;
-    margin-top: 1rem;
+    width: auto;
+    margin: 1.5rem auto 0;
 }
 
 .modern-submit-review-btn:hover {
@@ -3456,10 +3455,10 @@ function generateReviewsHTML(productId) {
                 <div class="modern-reviewer-avatar">${profileLetter}</div>
                 <div class="modern-reviewer-info">
                     <p class="modern-reviewer-name">${review.name}</p>
-                    <p class="modern-review-date">${review.date}</p>
                 </div>
             </div>
             <div class="modern-review-rating">${starsHTML}</div>
+            <p class="modern-review-date">${review.date}</p>
             <p class="modern-review-comment">${review.comment}</p>
         </div>
     `}).join('');
@@ -3479,10 +3478,6 @@ function generateReviewsHTML(productId) {
                     <input type="text" id="reviewerName" name="name" placeholder="e.g. John Doe" required>
                 </div>
                 <div class="form-group">
-                    <label for="reviewComment">Your Review:</label>
-                    <textarea id="reviewComment" name="comment" rows="4" placeholder="What did you like or dislike?" required></textarea>
-                </div>
-                <div class="form-group">
                      <div class="modern-rating-input">
                         <label class="rating-label">Stars:</label>
                         <div class="stars">
@@ -3490,6 +3485,10 @@ function generateReviewsHTML(productId) {
                         </div>
                      </div>
                     <input type="hidden" id="reviewerRating" name="rating" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewComment">Your Review:</label>
+                    <textarea id="reviewComment" name="comment" rows="4" placeholder="What did you like or dislike?" required></textarea>
                 </div>
                 <button type="submit" class="modern-submit-review-btn">Submit Review</button>
             </form>
