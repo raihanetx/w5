@@ -729,12 +729,11 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 }
 
 .modern-review-card {
-    background-color: var(--background-color);
-    border: none;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    border-radius: 0;
-    padding: 1.5rem 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .modern-review-profile {
@@ -3445,9 +3444,9 @@ function generateReviewsHTML(productId) {
     let reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`)) || [];
     if (reviews.length === 0) {
         reviews = [
-            { name: 'John Doe', rating: 5, comment: 'Great product, very happy with my purchase!', date: 'July 30, 2025' },
-            { name: 'Sarah Khan', rating: 4, comment: 'Good quality, but delivery was a bit late.', date: 'July 28, 2025' },
-            { name: 'Mike Ross', rating: 5, comment: 'Excellent! Would recommend.', date: 'July 27, 2025' },
+            { name: 'John Doe', rating: 5, comment: '', date: 'July 30, 2025' },
+            { name: 'Sarah Khan', rating: 4, comment: '', date: 'July 28, 2025' },
+            { name: 'Mike Ross', rating: 5, comment: '', date: 'July 27, 2025' },
         ];
     }
 
@@ -3460,9 +3459,9 @@ function generateReviewsHTML(productId) {
             <div class="modern-review-profile">
                 <div class="modern-reviewer-avatar">${profileLetter}</div>
                 <p class="modern-reviewer-name">${review.name}</p>
+                <p class="modern-review-date">${review.date}</p>
+                <div class="modern-review-rating">${starsHTML}</div>
             </div>
-            <p class="modern-review-date">${review.date}</p>
-            <div class="modern-review-rating">${starsHTML}</div>
             <p class="modern-review-comment">${review.comment}</p>
         </div>
     `}).join('');
