@@ -730,16 +730,18 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
 .modern-review-card {
     background-color: var(--background-color);
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 0.75rem;
+    border: none;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+    padding: 1.5rem 0;
 }
 
-.modern-review-header {
+.modern-review-profile {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 0.5rem;
-    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .modern-reviewer-avatar {
@@ -766,8 +768,9 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     font-weight: 600;
     font-size: 1.1rem;
     color: var(--text-color);
-    margin: 0;
+    margin-top: 0.5rem;
     line-height: 1.2;
+    text-align: center;
 }
 
 .modern-review-meta {
@@ -780,12 +783,14 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 .modern-review-rating {
     font-size: 1rem;
     color: #FFC107;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .modern-review-date {
     font-size: 0.85rem;
     color: #777;
+    text-align: center;
     margin-bottom: 0.5rem;
 }
 
@@ -793,7 +798,8 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     color: #444;
     line-height: 1.6;
     font-size: 1rem;
-    padding-left: 0; /* Removed padding */
+    text-align: center;
+    padding: 0 1rem;
 }
 
 /* New Review Form */
@@ -3451,14 +3457,12 @@ function generateReviewsHTML(productId) {
         const hiddenClass = index >= 3 ? ' hidden-review' : ''; // Show 3 reviews by default
         return `
         <div class="modern-review-card${hiddenClass}">
-            <div class="modern-review-header">
+            <div class="modern-review-profile">
                 <div class="modern-reviewer-avatar">${profileLetter}</div>
-                <div class="modern-reviewer-info">
-                    <p class="modern-reviewer-name">${review.name}</p>
-                </div>
+                <p class="modern-reviewer-name">${review.name}</p>
             </div>
-            <div class="modern-review-rating">${starsHTML}</div>
             <p class="modern-review-date">${review.date}</p>
+            <div class="modern-review-rating">${starsHTML}</div>
             <p class="modern-review-comment">${review.comment}</p>
         </div>
     `}).join('');
