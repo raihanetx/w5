@@ -654,6 +654,21 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             max-height: 1000px; /* A large value to show all content */
         }
 
+        .expandable-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, var(--background-color));
+            pointer-events: none;
+        }
+
+        .expandable-content.expanded::after {
+            display: none;
+        }
+
         .see-more-btn {
             background: transparent;
             position: relative; /* Changed from absolute */
@@ -745,51 +760,61 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             line-height: 1.6;
         }
         .form-container {
-            background-color: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
         }
         .form-container h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
         .review-form .form-group {
             display: flex;
             flex-direction: column;
-            margin-bottom: 1rem;
+            margin-bottom: 1rem; /* Re-adjusting for the new design */
         }
         .review-form label {
-            font-weight: 500;
-            margin-bottom: 0.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             font-size: 0.9rem;
-            color: #555;
+            color: #333;
         }
         .review-form input[type="text"],
         .review-form textarea {
-            background-color: #ffffff;
-            border: 1px solid #ced4da;
-            border-radius: 6px;
-            padding: 0.7rem;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0.9rem 1rem;
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 1rem;
             width: 100%;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         .review-form input[type="text"]:focus,
         .review-form textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(143,135,241,0.15);
+            box-shadow: 0 0 0 3px rgba(143,135,241,0.2);
+            background-color: #fff;
+        }
+        .rating-input {
+            margin-bottom: 0.5rem;
         }
         .rating-input span {
-            font-size: 1.6rem;
-            color: #ccc;
+            font-size: 2rem;
+            color: #ddd;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: color 0.2s, transform 0.2s;
         }
         .rating-input span:hover,
         .rating-input span.hover {
             color: #FFC107;
+            transform: scale(1.1);
         }
         .rating-input span.selected {
             color: #FFC107;
@@ -798,18 +823,20 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 6px;
-            padding: 0.8rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 600;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
-            margin-top: 0.5rem;
-            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(143,135,241,0.2);
         }
         .submit-review-btn:hover {
-            filter: brightness(1.1);
-            transform: translateY(-1px);
+            background-color: #7a70e8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(143,135,241,0.3);
         }
         @media (min-width: 769px) {
             .review-section {
