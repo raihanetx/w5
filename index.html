@@ -722,12 +722,15 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             margin-bottom: 2rem;
         }
         .review-card {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 1.5rem;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
         }
-        .review-card:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .review-card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
         .review-header {
             display: flex;
@@ -776,13 +779,13 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         .review-form .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .review-form label {
             display: block;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .review-form input[type="text"],
@@ -829,6 +832,29 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
         .submit-review-btn:hover {
             background-color: #7a70e8;
+        }
+
+        .hidden-review {
+            display: none;
+        }
+
+        .view-more-reviews-btn {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 1rem auto 0;
+            text-align: center;
+        }
+
+        .view-more-reviews-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .checkout-page { background-color: #f8f9fa; margin: 0; min-height: calc(100vh - var(--header-height)); }
@@ -3299,14 +3325,16 @@ function generateReviewsHTML(productId) {
         reviews = [
             { name: 'John Doe', rating: 5, comment: 'Great product, very happy with my purchase!', date: 'July 30, 2025' },
             { name: 'Sarah Khan', rating: 4, comment: 'Good quality, but delivery was a bit late.', date: 'July 28, 2025' },
+            { name: 'Mike Ross', rating: 5, comment: 'Excellent! Would recommend.', date: 'July 27, 2025' },
         ];
     }
 
-    const reviewsListHTML = reviews.map(review => {
+    const reviewsListHTML = reviews.map((review, index) => {
         const starsHTML = Array.from({ length: 5 }, (_, i) => i < review.rating ? '★' : '☆').join('');
         const profileLetter = review.name.charAt(0).toUpperCase();
+        const hiddenClass = index >= 2 ? ' hidden-review' : '';
         return `
-        <div class="review-card">
+        <div class="review-card${hiddenClass}">
             <div class="review-header">
                 <div class="reviewer-info">
                     <i class="fas fa-user-circle"></i>
@@ -3321,6 +3349,11 @@ function generateReviewsHTML(productId) {
             <p class="review-comment">"${review.comment}"</p>
         </div>
     `}).join('');
+
+    let viewMoreButtonHTML = '';
+    if (reviews.length > 2) {
+        viewMoreButtonHTML = `<button class="view-more-reviews-btn" onclick="showMoreReviews(this)">View More Reviews</button>`;
+    }
 
     const reviewFormHTML = `
         <div class="form-container">
@@ -3353,9 +3386,21 @@ function generateReviewsHTML(productId) {
             <div class="reviews-list">
                 ${reviewsListHTML}
             </div>
+            ${viewMoreButtonHTML}
             ${reviewFormHTML}
         </div>
     `;
+}
+
+function showMoreReviews(button) {
+    const reviewSection = button.closest('.review-section');
+    if (reviewSection) {
+        const hiddenReviews = reviewSection.querySelectorAll('.hidden-review');
+        hiddenReviews.forEach(review => {
+            review.classList.remove('hidden-review');
+        });
+        button.style.display = 'none';
+    }
 }
 
         function getRelatedProducts(currentProductId, category, limit = 4) { const dataToUse = (allProductsData && allProductsData.length > 0) ? allProductsData : generateDemoProducts(); if (!dataToUse || dataToUse.length === 0) return []; const relatedProducts = dataToUse.filter(product => product.category === category && product.id !== currentProductId); const shuffled = relatedProducts.sort(() => Math.random() - 0.5); return shuffled.slice(0, limit); }
