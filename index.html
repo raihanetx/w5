@@ -718,32 +718,38 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             padding-bottom: 10px;
         }
 
-.review {
-    border: 1px solid #000;
-    padding: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
+        .review {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
 
-.review-header {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 5px;
-}
+        .review:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
         .review-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #8F87F1;
+            background-color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 12px;
         }
 
         .review-author-info {
@@ -753,29 +759,22 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .review-author {
             font-weight: 600;
             color: #212529;
-            margin: 0;
         }
 
         .review-date {
             color: #6c757d;
             font-size: 14px;
-            margin: 0;
-        }
-
-        .review-body {
-            width: 100%;
         }
 
         .review-stars {
             color: #ffc107;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-size: 18px;
         }
 
         .review-text {
             color: #6c757d;
-            line-height: 1.4;
-            margin: 0;
+            line-height: 1.6;
         }
 
         .overall-rating {
@@ -791,7 +790,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             font-size: 24px;
             font-weight: 700;
             margin-right: 15px;
-            color: #8F87F1;
+            color: var(--primary-color);
         }
 
         .rating-stars {
@@ -806,7 +805,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
         .see-more {
             display: inline-block;
-            color: #8F87F1;
+            color: var(--primary-color);
             font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
@@ -822,7 +821,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             background: #fff;
             padding: 25px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 30px;
             box-shadow: none;
         }
 
@@ -834,7 +833,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
@@ -859,7 +858,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #8F87F1;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(143, 135, 241, 0.1);
         }
 
@@ -891,7 +890,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         .submit-btn {
-            background-color: #8F87F1;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 14px 25px;
@@ -903,31 +902,9 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         .submit-btn:hover {
-            background-color: #7a71e0;
-            transform: translateY(-2px);
-        }
-
-        .hidden-review {
-            display: none;
-        }
-
-        .view-more-reviews-btn {
-            background-color: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 1rem auto 0;
-            text-align: center;
-        }
-
-        .view-more-reviews-btn:hover {
             background-color: var(--primary-color);
-            color: white;
+            filter: brightness(0.9);
+            transform: translateY(-2px);
         }
 
         .checkout-page { background-color: #f8f9fa; margin: 0; min-height: calc(100vh - var(--header-height)); }
@@ -3457,23 +3434,22 @@ function generateReviewsHTML(productId) {
     ];
 
     const totalRating = reviews.reduce((acc, review) => acc + review.stars, 0);
-    const averageRating = (totalRating / reviews.length).toFixed(1);
+    const averageRating = reviews.length > 0 ? (totalRating / reviews.length).toFixed(1) : "0.0";
 
     const fullReviewsHTML = reviews.map(review => `
         <div class="review">
             <div class="review-header">
-                <div class="review-avatar">${review.author.charAt(0)}J</div>
+                <div class="review-avatar">${review.author.split(" ").map(n => n[0]).join('')}</div>
                 <div class="review-author-info">
                     <div class="review-author">${review.author}</div>
                     <div class="review-date">${review.date}</div>
                 </div>
             </div>
-            <div class="review-body">
-                <div class="review-stars">${'★'.repeat(review.stars)}${'☆'.repeat(5 - review.stars)}</div>
-                <div class="review-text">${review.text}</div>
+            <div class="review-stars">${'★'.repeat(review.stars)}${'☆'.repeat(5 - review.stars)}</div>
+            <div class="review-text">
+                ${review.text}
             </div>
-        </div>
-    `).join('');
+        </div>`).join('');
 
     return `
     <div class="section">
@@ -3487,33 +3463,57 @@ function generateReviewsHTML(productId) {
                 <div class="rating-count">(${reviews.length} reviews)</div>
             </div>
 
-            <div id="reviews-full">
+            <div class="truncated-content" id="reviews-truncated">
+                <div class="review">
+                    <div class="review-header">
+                        <div class="review-avatar">${reviews[0].author.split(" ").map(n => n[0]).join('')}</div>
+                        <div class="review-author-info">
+                            <div class="review-author">${reviews[0].author}</div>
+                            <div class="review-date">${reviews[0].date}</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">${'★'.repeat(reviews[0].stars)}${'☆'.repeat(5 - reviews[0].stars)}</div>
+                    <div class="review-text">
+                        ${reviews[0].text}
+                        <a class="see-more" onclick="toggleReviews()" style="margin-left: 5px;">See More...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reviews-full" style="display: none;">
                 ${fullReviewsHTML}
+                <a class="see-more" onclick="toggleReviews()" style="display: inline-block; margin-top: 10px;">See Less</a>
             </div>
 
             <!-- Review Form -->
-            <div class="review-form">
+            <form class="review-form" id="reviewForm">
                 <h3 class="form-title">Write Your Review</h3>
+                <input type="hidden" name="productId" value="${productId}">
                 <div class="form-group">
                     <label for="review-name">Your Name</label>
-                    <input type="text" id="review-name" placeholder="Enter your name">
+                    <input type="text" id="review-name" name="name" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
                     <label>Your Rating</label>
                     <div class="star-rating">
-                        <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
-                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1">★</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2">★</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3">★</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4">★</label>
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5">★</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="review-text">Your Review</label>
-                    <textarea id="review-text" placeholder="Share your experience with this product..."></textarea>
+                    <label for="review-text-area">Your Review</label>
+                    <textarea id="review-text-area" name="comment" placeholder="Share your experience with this product..." required></textarea>
                 </div>
-                <button class="submit-btn">Submit Review</button>
-            </div>
+                <button type="submit" class="submit-btn">Submit Review</button>
+            </form>
         </div>
     </div>
     `;
@@ -3522,16 +3522,13 @@ function generateReviewsHTML(productId) {
 function toggleReviews() {
     const truncated = document.getElementById('reviews-truncated');
     const full = document.getElementById('reviews-full');
-    const toggle = document.getElementById('reviews-toggle');
 
     if (truncated.style.display === 'none') {
         truncated.style.display = 'block';
         full.style.display = 'none';
-        toggle.textContent = 'See More...';
     } else {
         truncated.style.display = 'none';
         full.style.display = 'block';
-        toggle.textContent = 'See Less';
     }
 }
 
