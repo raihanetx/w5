@@ -617,6 +617,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             gap: 1rem;
             margin-bottom: 1rem;
             border-bottom: 2px solid #eee;
+            justify-content: center;
         }
 
         .tab-link {
@@ -709,14 +710,14 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .reviews-list {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
         .review-card {
-            background-color: #ffffff;
+            background-color: #f8f9fa;
             border: 1px solid #e9ecef;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .review-header {
             display: flex;
@@ -3372,6 +3373,7 @@ function generateReviewsHTML(productId) {
 
     return `
         <div class="review-section">
+            ${reviewFormHTML}
             <div class="expandable-content">
                 <div class="reviews-list">
                     ${reviewsListHTML}
@@ -3379,7 +3381,6 @@ function generateReviewsHTML(productId) {
             </div>
             <button class="see-more-btn" onclick="toggleSeeMore(this)">View More Reviews</button>
             <button class="see-less-btn" onclick="toggleSeeMore(this, true)" style="display:none;">Show Less</button>
-            ${reviewFormHTML}
         </div>
     `;
 }
