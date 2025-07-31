@@ -708,8 +708,8 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     width: 100%;
     max-width: 850px;
     margin: 2rem auto;
-    padding: 2rem;
-    background-color: #f9f9f9;
+    padding: 0; /* Removed padding */
+    background-color: transparent; /* Removed background */
     border-radius: 16px;
 }
 
@@ -724,21 +724,21 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 .modern-reviews-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 1.5rem; /* Reduced gap */
+    margin-bottom: 2rem; /* Reduced margin */
 }
 
 .modern-review-card {
     background-color: var(--background-color);
     border: 1px solid #e9e9e9;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem; /* Reduced padding */
 }
 
 .modern-review-header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem; /* Reduced margin */
     gap: 1rem;
 }
 
@@ -758,6 +758,8 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
 .modern-reviewer-info {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .modern-reviewer-name {
@@ -765,9 +767,11 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     font-size: 1.1rem;
     color: var(--text-color);
     margin: 0;
+    line-height: 1.2;
 }
 
 .modern-review-meta {
+    /* This class is not directly used for the new layout in the review card, but we can leave it for other potential uses. */
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -777,36 +781,38 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 .modern-review-rating {
     font-size: 1rem;
     color: #FFC107;
+    margin-bottom: 0.75rem; /* Added margin */
 }
 
 .modern-review-date {
     font-size: 0.85rem;
     color: #777;
+    margin-top: 0.1rem; /* Reduced gap from name */
 }
 
 .modern-review-comment {
     color: #444;
-    line-height: 1.7;
+    line-height: 1.6;
     font-size: 1rem;
-    padding-left: calc(48px + 1rem); /* Align with text above avatar */
+    padding-left: 0; /* Removed padding */
 }
 
 /* New Review Form */
 .modern-review-form-container {
     border-top: 1px solid #e0e0e0;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem; /* Reduced padding */
 }
 
 .modern-form-title {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* Reduced margin */
     text-align: center;
 }
 
 .modern-review-form .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem; /* Reduced margin */
 }
 
 .modern-review-form label {
@@ -3450,12 +3456,10 @@ function generateReviewsHTML(productId) {
                 <div class="modern-reviewer-avatar">${profileLetter}</div>
                 <div class="modern-reviewer-info">
                     <p class="modern-reviewer-name">${review.name}</p>
-                    <div class="modern-review-meta">
-                        <div class="modern-review-rating">${starsHTML}</div>
-                        <div class="modern-review-date">${review.date}</div>
-                    </div>
+                    <p class="modern-review-date">${review.date}</p>
                 </div>
             </div>
+            <div class="modern-review-rating">${starsHTML}</div>
             <p class="modern-review-comment">${review.comment}</p>
         </div>
     `}).join('');
