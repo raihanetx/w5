@@ -3328,7 +3328,7 @@ function generateReviewsHTML(productId) {
         ];
     }
 
-    const reviewsList = reviews.map(review => {
+    const reviewsListHTML = reviews.map(review => {
         const starsHTML = Array.from({ length: 5 }, (_, i) => i < review.rating ? '★' : '☆').join('');
         const profileLetter = review.name.charAt(0).toUpperCase();
         return `
@@ -3372,9 +3372,13 @@ function generateReviewsHTML(productId) {
 
     return `
         <div class="review-section">
-            <div class="reviews-list">
-                ${reviewsList}
+            <div class="expandable-content">
+                <div class="reviews-list">
+                    ${reviewsListHTML}
+                </div>
             </div>
+            <button class="see-more-btn" onclick="toggleSeeMore(this)">View More Reviews</button>
+            <button class="see-less-btn" onclick="toggleSeeMore(this, true)" style="display:none;">Show Less</button>
             ${reviewFormHTML}
         </div>
     `;
