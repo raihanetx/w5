@@ -813,16 +813,14 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
         @media (min-width: 769px) {
             .review-section {
-                /* No longer 2-column */
-                gap: 2.5rem;
+                display: block;
             }
             .reviews-list {
-                order: unset; /* Or remove */
+                /* No desktop-specific ordering needed */
             }
             .form-container {
-                order: unset; /* Or remove */
-                position: static; /* Or remove */
-                margin-top: 2rem; /* Add space */
+                position: static;
+                margin-top: 2rem;
             }
         }
 
