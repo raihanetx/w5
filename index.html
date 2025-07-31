@@ -704,13 +704,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             margin-top: 0.5rem;
         }
 
-        .modern-review-section {
+.modern-review-section {
     width: 100%;
     max-width: 850px;
-    margin: 1rem auto;
+    margin: 2rem auto;
     padding: 0;
     background-color: transparent;
-    border-radius: 16px;
 }
 
 .modern-reviews-title {
@@ -724,23 +723,24 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 .modern-reviews-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1.5rem; /* Increased gap */
+    margin-bottom: 2rem;
 }
 
 .modern-review-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-}
-
-.modern-review-profile {
+    background-color: var(--background-color); /* Use background color variable */
+    border: 1px solid #e0e0e0; /* Softer border */
+    border-radius: 12px; /* Slightly more rounded corners */
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+.modern-review-header {
+    display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 1rem;
 }
 
 .modern-reviewer-avatar {
@@ -767,56 +767,50 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     font-weight: 600;
     font-size: 1.1rem;
     color: var(--text-color);
-    margin-top: 0.5rem;
-    line-height: 1.2;
-    text-align: center;
 }
 
 .modern-review-meta {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-top: 0.25rem;
 }
 
 .modern-review-rating {
     font-size: 1rem;
     color: #FFC107;
-    margin-bottom: 0.5rem;
-    text-align: center;
 }
 
 .modern-review-date {
     font-size: 0.85rem;
     color: #777;
-    text-align: center;
-    margin-bottom: 0.5rem;
 }
 
 .modern-review-comment {
-    color: #444;
+    color: #333; /* Darker text for better readability */
     line-height: 1.6;
     font-size: 1rem;
-    text-align: center;
-    padding: 0 1rem;
+    white-space: pre-wrap; /* To respect line breaks in comment */
 }
 
-/* New Review Form */
+/* Review Form */
 .modern-review-form-container {
-    border-top: 1px solid #e0e0e0;
-    padding-top: 1.5rem; /* Reduced padding */
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
 }
 
 .modern-form-title {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-color);
-    margin-bottom: 1rem; /* Reduced margin */
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .modern-review-form .form-group {
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
 }
 
 .modern-review-form label {
@@ -848,37 +842,38 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
 .modern-review-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
 }
 
 .modern-rating-input {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 .modern-rating-input .rating-label {
     font-weight: 600;
     color: #555;
     font-size: 0.9rem;
-    margin-right: 1rem;
+    margin-bottom: 0;
 }
 
 .modern-rating-input .stars {
     display: flex;
+    gap: 0.25rem;
 }
 
 .modern-rating-input .stars span {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: #ddd;
     cursor: pointer;
     transition: color 0.2s, transform 0.2s;
-    padding: 0 0.2rem;
 }
 
 .modern-rating-input .stars span:hover,
 .modern-rating-input .stars span.hover {
     color: #FFC107;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .modern-rating-input .stars span.selected {
@@ -896,8 +891,8 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     display: block;
-    width: auto;
-    margin: 1.5rem auto 0;
+    width: 100%;
+    margin-top: 1.5rem;
 }
 
 .modern-submit-review-btn:hover {
@@ -906,12 +901,36 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-@media (max-width: 768px) {
-    .modern-review-section {
-        padding: 1.5rem;
+@media (min-width: 768px) {
+    .modern-review-card {
+        flex-direction: row;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    .modern-review-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+        width: 120px;
+    }
+    .modern-reviewer-name {
+        margin-top: 0;
+    }
+    .modern-review-content {
+        flex-grow: 1;
+    }
+    .modern-review-meta {
+        margin-bottom: 0.5rem;
     }
     .modern-review-comment {
-        padding-left: 0;
+        margin-top: 0.5rem;
+    }
+    .modern-submit-review-btn {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -3444,27 +3463,35 @@ function generateReviewsHTML(productId) {
     let reviews = JSON.parse(localStorage.getItem(`reviews_${productId}`)) || [];
     if (reviews.length === 0) {
         reviews = [
-            { name: 'John Doe', rating: 5, comment: '', date: 'July 30, 2025' },
-            { name: 'Sarah Khan', rating: 4, comment: '', date: 'July 28, 2025' },
-            { name: 'Mike Ross', rating: 5, comment: '', date: 'July 27, 2025' },
+            { name: 'John Doe', rating: 5, comment: 'This is a fantastic product! Highly recommended.', date: 'July 30, 2025' },
+            { name: 'Sarah Khan', rating: 4, comment: 'Really good, but could have a few more features.', date: 'July 28, 2025' },
+            { name: 'Mike Ross', rating: 5, comment: 'Absolutely love it! Changed my workflow completely.', date: 'July 27, 2025' },
         ];
     }
 
     const reviewsListHTML = reviews.map((review, index) => {
-        const starsHTML = Array.from({ length: 5 }, (_, i) => `<span>${i < review.rating ? '★' : '☆'}</span>`).join('');
+        const starsHTML = Array.from({ length: 5 }, (_, i) => `<span class="${i < review.rating ? 'selected' : ''}">★</span>`).join('');
         const profileLetter = review.name.charAt(0).toUpperCase();
-        const hiddenClass = index >= 3 ? ' hidden-review' : ''; // Show 3 reviews by default
+        const hiddenClass = index >= 3 ? ' hidden-review' : '';
+
         return `
         <div class="modern-review-card${hiddenClass}">
-            <div class="modern-review-profile">
+            <div class="modern-review-header">
                 <div class="modern-reviewer-avatar">${profileLetter}</div>
-                <p class="modern-reviewer-name">${review.name}</p>
-                <p class="modern-review-date">${review.date}</p>
-                <div class="modern-review-rating">${starsHTML}</div>
+                <div class="modern-reviewer-info">
+                    <p class="modern-reviewer-name">${review.name}</p>
+                </div>
             </div>
-            <p class="modern-review-comment">${review.comment}</p>
+            <div class="modern-review-content">
+                <div class="modern-review-meta">
+                    <div class="modern-review-rating">${starsHTML}</div>
+                    <div class="modern-review-date">${review.date}</div>
+                </div>
+                <p class="modern-review-comment">${review.comment}</p>
+            </div>
         </div>
-    `}).join('');
+        `;
+    }).join('');
 
     let viewMoreButtonHTML = '';
     if (reviews.length > 3) {
@@ -3473,25 +3500,25 @@ function generateReviewsHTML(productId) {
 
     const reviewFormHTML = `
         <div class="modern-review-form-container">
-            <h3 class="modern-form-title">Leave a Review</h3>
+            <h3 class="modern-form-title">Leave Your Feedback</h3>
             <form id="reviewForm" class="modern-review-form">
                 <input type="hidden" name="productId" value="${productId}">
                 <div class="form-group">
-                    <label for="reviewerName">Your Name:</label>
+                    <label for="reviewerName">Your Name</label>
                     <input type="text" id="reviewerName" name="name" placeholder="e.g. John Doe" required>
                 </div>
                 <div class="form-group">
-                     <div class="modern-rating-input">
-                        <label class="rating-label">Stars:</label>
+                    <label>Your Rating</label>
+                    <div class="modern-rating-input">
                         <div class="stars">
                             <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
                         </div>
-                     </div>
+                    </div>
                     <input type="hidden" id="reviewerRating" name="rating" required>
                 </div>
                 <div class="form-group">
-                    <label for="reviewComment">Your Review:</label>
-                    <textarea id="reviewComment" name="comment" rows="4" placeholder="What did you like or dislike?" required></textarea>
+                    <label for="reviewComment">Your Review</label>
+                    <textarea id="reviewComment" name="comment" rows="4" placeholder="Share your thoughts about the product..." required></textarea>
                 </div>
                 <button type="submit" class="modern-submit-review-btn">Submit Review</button>
             </form>
