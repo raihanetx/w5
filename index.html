@@ -395,12 +395,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .category-section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-color); text-align: center; margin-top: 1rem; margin-bottom: 1.5rem; }
         .categories {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             gap: 1rem;
             padding-bottom: 1.5rem;
             overflow-x: auto;
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .categories::-webkit-scrollbar {
             display: none;
@@ -418,9 +418,9 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             align-items: center;
             justify-content: center;
             border: 1px solid #e9e9e9;
-            flex: 0 0 100px;
-            width: 100px;
-            height: 100px;
+            flex: 0 0 150px;
+            width: 150px;
+            height: 150px;
         }
         .category:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); border-color: var(--primary-color); }
         .category-icon-wrapper {
@@ -436,18 +436,6 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
         .category:hover .category-icon-wrapper { transform: scale(1.05); }
         .category i.category-icon-fa { font-size: 1.5rem; color: white; display: block; line-height: 1; }
-        .category-name {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-color);
-            line-height: 1.2;
-            margin-bottom: 0.2rem;
-        }
-        .category-subtitle {
-            font-size: 0.6rem;
-            color: #666666;
-            line-height: 1.2;
-        }
 
         .featured-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; margin-top: 2.5rem; }
         .product-listings > .featured-section-header:first-of-type { margin-top: 1rem; }
@@ -1407,23 +1395,15 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             <section class="categories container">
                 <div class="category" onclick="navigateTo('products', 'course')">
                     <div class="category-icon-wrapper"><i class="fas fa-graduation-cap category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Course</p>
-                    <p class="category-subtitle" id="category-count-course">0 Premium Courses</p>
                 </div>
                 <div class="category" onclick="navigateTo('products', 'subscription')">
                     <div class="category-icon-wrapper"><i class="fas fa-key category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Subscription</p>
-                    <p class="category-subtitle" id="category-count-subscription">0 Premium Services</p>
                 </div>
                 <div class="category" onclick="navigateTo('products', 'software')">
                     <div class="category-icon-wrapper"><i class="fas fa-laptop-code category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Software</p>
-                    <p class="category-subtitle" id="category-count-software">0 Bundle Packages</p>
                 </div>
                 <div class="category" onclick="navigateTo('products', 'ebook')">
                     <div class="category-icon-wrapper"><i class="fas fa-book-open category-icon-fa" aria-hidden="true"></i></div>
-                    <p class="category-name">Ebook</p>
-                    <p class="category-subtitle" id="category-count-ebook">0 Digital Guides</p>
                 </div>
             </section>
 
