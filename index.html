@@ -605,6 +605,115 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             flex-direction: column;
         }
 
+        .product-reviews-section {
+            margin-top: 2rem;
+        }
+
+        .reviews-summary {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .average-rating {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .total-reviews {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .stars {
+            color: #f39c12;
+        }
+
+        .review-form-container {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-form-container h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .review-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .review-form label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .review-form .rating-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .review-form .star-rating {
+            display: inline-flex;
+            flex-direction: row-reverse;
+        }
+
+        .review-form .star-rating input {
+            display: none;
+        }
+
+        .review-form .star-rating label {
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .review-form .star-rating input:checked ~ label,
+        .review-form .star-rating label:hover,
+        .review-form .star-rating label:hover ~ label {
+            color: #f39c12;
+        }
+
+        .reviews-list {
+            margin-top: 2rem;
+        }
+
+        .review-item {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
         .product-short-description {
             font-size: 1rem;
             color: #555;
@@ -2131,7 +2240,8 @@ CapCut Pro নিয়ে এসেছে প্রিমিয়াম সব ফ�
     price: 249,
     image: "product_images/CAPCUT PRO.png",
     isFeatured: true,
-    stock: 15
+    stock: 15,
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2210,7 +2320,8 @@ Watermark ছাড়া HD এক্সপোর্ট, হাজারো প্
         { label: `6 MONTH`, price: 49 },
         { label: `1 YEAR`, price: 99 },
         { label: `3 YEARS`, price: 149 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2254,7 +2365,8 @@ GPT‑4o, GPT‑4.1, এবং GPT‑4.5 সহ ফুল ফিচার আন
     isFeatured: true,
     durations: [
         { label: `1 MONTH`, price: 499 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2314,7 +2426,8 @@ Google, Facebook, Instagram, LinkedIn, TikTok এবং Telegram থেকে �
         { label: `6 MONTH`, price: 699 },
         { label: `1 YEAR`, price: 999 },
         { label: `LIFETIME`, price: 1999 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2373,7 +2486,8 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
         { label: `Windows 7 Home Premium Key`, price: 349 },
         { label: `Windows 7 Ultimate Key`, price: 299 },
         { label: `Windows 7 Professional Key`, price: 349 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2430,7 +2544,8 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
     durations: [
         { label: `Windows 8 Professional Key`, price: 299 },
         { label: `Windows 8.1 Professional Key`, price: 349 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2489,7 +2604,8 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
         { label: `Windows 10 Pro Key`, price: 399 },
         { label: `Windows 10 Home Key`, price: 399 },
         { label: `Windows 10 Enterprise Key`, price: 449 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2548,7 +2664,8 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
         { label: `Windows 11 Pro Key`, price: 499 },
         { label: `Windows 11 Home Key`, price: 499 },
         { label: `Windows 11 Enterprise Key`, price: 549 }
-    ]
+    ],
+    reviews: []
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2752,12 +2869,22 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
                         return;
                     }
 
-                    // This is for demo purposes. In a real app, you'd send this to a server.
-                    // Here, we just show the new review by re-rendering the detail page.
-                    showToast('Review submitted successfully!', 'success');
-
-                    // Re-render the product detail to show the new review
-                    showProductDetail(productId);
+                    const product = getProductById(productId);
+                    if (product) {
+                        if (!product.reviews) {
+                            product.reviews = [];
+                        }
+                        product.reviews.push({
+                            name: name,
+                            rating: parseInt(rating),
+                            comment: comment,
+                            date: new Date().toISOString()
+                        });
+                        showToast('Review submitted successfully!', 'success');
+                        showProductDetail(productId);
+                    } else {
+                        showToast('Could not submit review. Product not found.', 'error');
+                    }
                 }
             });
             if (domElements.checkoutBtnCart) { domElements.checkoutBtnCart.addEventListener('click', () => { if (cart.length === 0) { showToast('Your cart is empty! Cannot proceed to checkout.', 'error'); return; } domElements.cartModal.style.display = 'none'; navigateTo('checkout', null, null, true); }); }
@@ -3090,6 +3217,43 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             </div>
         </div>
         ${tabsHTML}
+        <div class="product-reviews-section">
+            <div class="reviews-summary">
+                <div class="average-rating">${calculateAverageRating(product.reviews)}</div>
+                <div class="stars">
+                    ${renderStars(calculateAverageRating(product.reviews))}
+                </div>
+                <div class="total-reviews">Based on ${product.reviews.length} reviews</div>
+            </div>
+            <div class="review-form-container">
+                <h3>Write a review</h3>
+                <form class="review-form" id="reviewForm">
+                    <input type="hidden" name="productId" value="${product.id}">
+                    <div class="form-group">
+                        <label for="reviewerName">Name</label>
+                        <input type="text" id="reviewerName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="star-rating">
+                            <input type="radio" id="5-stars" name="rating" value="5" /><label for="5-stars" class="star">&#9733;</label>
+                            <input type="radio" id="4-stars" name="rating" value="4" /><label for="4-stars" class="star">&#9733;</label>
+                            <input type="radio" id="3-stars" name="rating" value="3" /><label for="3-stars" class="star">&#9733;</label>
+                            <input type="radio" id="2-stars" name="rating" value="2" /><label for="2-stars" class="star">&#9733;</label>
+                            <input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" class="star">&#9733;</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewComment">Review</label>
+                        <textarea id="reviewComment" name="comment" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Review</button>
+                </form>
+            </div>
+            <div class="reviews-list">
+                <!-- Reviews will be dynamically inserted here -->
+            </div>
+        </div>
         ${relatedProductsHTML}`;
 
     // Event listeners
@@ -3144,7 +3308,55 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
         });
     }
 
+    renderReviews(product.reviews);
     setupRelatedProductImages();
+}
+
+function calculateAverageRating(reviews) {
+    if (!reviews || reviews.length === 0) {
+        return "N/A";
+    }
+    const total = reviews.reduce((acc, review) => acc + review.rating, 0);
+    return (total / reviews.length).toFixed(1);
+}
+
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    let starsHTML = '';
+    for (let i = 0; i < fullStars; i++) {
+        starsHTML += '<i class="fas fa-star"></i>';
+    }
+    if (halfStar) {
+        starsHTML += '<i class="fas fa-star-half-alt"></i>';
+    }
+    for (let i = 0; i < emptyStars; i++) {
+        starsHTML += '<i class="far fa-star"></i>';
+    }
+    return starsHTML;
+}
+
+function renderReviews(reviews) {
+    const reviewsList = document.querySelector('.reviews-list');
+    if (!reviewsList) return;
+    reviewsList.innerHTML = '';
+    if (!reviews || reviews.length === 0) {
+        reviewsList.innerHTML = '<p>No reviews yet. Be the first to write one!</p>';
+        return;
+    }
+    reviews.forEach(review => {
+        const reviewItem = document.createElement('div');
+        reviewItem.className = 'review-item';
+        reviewItem.innerHTML = `
+            <div class="review-header">
+                <span class="reviewer-name">${review.name}</span>
+                <div class="stars">${renderStars(review.rating)}</div>
+            </div>
+            <p>${review.comment}</p>
+        `;
+        reviewsList.appendChild(reviewItem);
+    });
 }
 
 function openTab(evt, tabName) {
