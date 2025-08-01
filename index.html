@@ -1305,10 +1305,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             gap: 1.5rem;
         }
         .review-item {
+            /* --- Mobile styles --- */
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 8px;
             padding: 1rem;
+            /* height can be set here for mobile if needed */
         }
         .review-top-section {
             display: flex;
@@ -1440,6 +1442,13 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             filter: brightness(0.9);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(143,135,241,0.3);
+        }
+
+        @media (min-width: 769px) {
+            .review-item {
+                /* --- Desktop styles --- */
+                height: 250px;
+            }
         }
 
         @media (max-width: 768px) {
