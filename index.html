@@ -704,98 +704,101 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             margin-top: 0.5rem;
         }
 
-        /* === REVIEWS SECTION MODERN STYLING START === */
+        /* === REVIEWS SECTION SUPER MINIMALIST STYLING START === */
 
         .reviews-section-container {
-            background-color: #f9f9f9;
-            padding: 2.5rem 1.25rem;
-            border-radius: 12px;
+            background-color: var(--background-color);
+            padding: 3rem 1.25rem;
             margin-top: 2rem;
+            border-top: 1px solid #eee;
         }
 
         .reviews-section-container .section-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--text-color);
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1rem;
             border-bottom: none;
         }
 
-        .reviews-summary {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--secondary-color);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2.5rem;
+        .reviews-header {
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
         }
 
-        .reviews-summary-main {
+        .reviews-summary-minimal {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .reviews-summary .average-rating {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            line-height: 1;
-        }
-
-        .reviews-summary .summary-stars {
-            font-size: 1.5rem;
+        .reviews-summary-minimal .summary-stars {
+            font-size: 1.2rem;
             color: #ffc107;
         }
 
-        .reviews-summary .total-reviews {
+        .reviews-summary-minimal .total-reviews {
             font-size: 1rem;
             color: #6c757d;
-            margin-top: 0.5rem;
+        }
+
+        .write-review-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .write-review-btn:hover {
+            filter: brightness(0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(143,135,241,0.3);
         }
 
         .reviews-list {
             display: grid;
-            gap: 1.5rem;
+            gap: 2rem;
+            grid-template-columns: 1fr;
         }
 
         .review-card {
-            background: var(--secondary-color);
+            background: transparent;
+            border: 1px solid #e9e9e9;
             border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e9e9e9;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color 0.3s ease;
         }
 
         .review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--primary-color);
         }
 
         .review-card-header {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            gap: 1rem;
         }
 
         .review-card .avatar {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background-color: var(--primary-color);
-            color: var(--text-light);
+            background-color: #f0f0f0;
+            color: var(--text-color);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 1.2rem;
-            margin-right: 1rem;
+            font-size: 1rem;
         }
 
         .review-card .author-info {
@@ -804,26 +807,26 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
         .review-card .author-name {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-color);
             margin: 0;
         }
 
         .review-card .review-date {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #6c757d;
             margin: 0;
         }
 
         .review-card .review-stars {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #ffc107;
             margin-bottom: 1rem;
         }
 
         .review-card .review-text {
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
             color: #555;
         }
 
@@ -831,20 +834,29 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             color: #e0e0e0;
         }
 
-        /* === REVIEWS FORM MODERN STYLING === */
         .review-form-container {
-            background: var(--secondary-color);
+            background: #fdfdfd;
             padding: 2rem;
             border-radius: 12px;
-            margin-top: 2.5rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            margin-top: 3rem;
+            border: 1px solid #eee;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .review-form-container.expanded {
+            max-height: 500px; /* Adjust as needed */
+            opacity: 1;
+            padding: 2rem;
         }
 
         .review-form-container .form-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: var(--primary-color);
+            color: var(--text-color);
             text-align: center;
         }
 
@@ -866,14 +878,13 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s, box-shadow 0.3s;
-            background-color: #f9f9f9;
+            background-color: var(--secondary-color);
         }
 
         .review-form-container .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(143, 135, 241, 0.2);
-            background-color: var(--secondary-color);
         }
 
         .review-form-container textarea.form-control {
@@ -884,12 +895,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .modern-rating-input .stars {
             display: flex;
             flex-direction: row-reverse;
-            justify-content: flex-end;
-            gap: 0.3rem;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .modern-rating-input .stars span {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #e0e0e0;
             cursor: pointer;
             transition: color 0.2s, transform 0.2s;
@@ -897,14 +908,18 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
         .modern-rating-input .stars span:hover,
         .modern-rating-input .stars span:hover ~ span,
-        .modern-rating-input .stars span.selected,
-        .modern-rating-input .stars span.selected ~ span {
+        .modern-rating-input .stars[data-rating="1"] span:nth-child(n+5),
+        .modern-rating-input .stars[data-rating="2"] span:nth-child(n+4),
+        .modern-rating-input .stars[data-rating="3"] span:nth-child(n+3),
+        .modern-rating-input .stars[data-rating="4"] span:nth-child(n+2),
+        .modern-rating-input .stars[data-rating="5"] span:nth-child(n+1) {
             color: #ffc107;
         }
 
         .modern-rating-input .stars span:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
+
 
         .review-form-container .submit-btn {
             background-color: var(--primary-color);
@@ -922,8 +937,6 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
 
         .review-form-container .submit-btn:hover {
             filter: brightness(0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(143,135,241,0.3);
         }
 
         .reviews-toggle-button {
@@ -944,30 +957,30 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             color: white;
         }
 
+
+        @media (min-width: 769px) {
+            .reviews-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .reviews-section-container {
-                padding: 1.5rem 0.9rem;
+                padding: 2rem 0.9rem;
             }
-
-            .reviews-summary-main {
-                flex-direction: column;
-                gap: 0.5rem;
+            .reviews-section-container .section-title {
+                font-size: 1.8rem;
             }
-
-            .reviews-summary .average-rating {
-                font-size: 2.8rem;
+            .reviews-header {
+                margin-bottom: 2rem;
             }
-
-            .reviews-summary .summary-stars {
-                font-size: 1.2rem;
-            }
-
-            .review-form-container {
+            .review-form-container.expanded {
                 padding: 1.5rem;
             }
         }
 
-        /* === REVIEWS SECTION MODERN STYLING END === */
+        /* === REVIEWS SECTION SUPER MINIMALIST STYLING END === */
 
         .checkout-page { background-color: #f8f9fa; margin: 0; min-height: calc(100vh - var(--header-height)); }
         .page#checkoutPage.active { display: flex; justify-content: center; align-items: flex-start; padding: 1.5rem 1.25rem; }
@@ -2992,38 +3005,13 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
                     const starsContainer = event.target.closest('.stars');
                     const ratingValue = event.target.dataset.value;
                     const hiddenInput = starsContainer.parentElement.querySelector('input[type="hidden"][name="rating"]');
+
                     if (hiddenInput) {
                         hiddenInput.value = ratingValue;
                     }
 
-                    starsContainer.querySelectorAll('span').forEach(s => s.classList.remove('selected'));
-
-                    let current = event.target;
-                    while(current) {
-                        current.classList.add('selected');
-                        current = current.nextElementSibling;
-                    }
-                }
-            });
-
-            document.body.addEventListener('mouseover', function(event) {
-                if (event.target.matches('.modern-rating-input .stars span')) {
-                    const stars = event.target.parentElement.querySelectorAll('span');
-                    stars.forEach(s => s.classList.remove('hover'));
-
-                    let current = event.target;
-                    while(current) {
-                        current.classList.add('hover');
-                        current = current.nextElementSibling;
-                    }
-                }
-            });
-
-            document.body.addEventListener('mouseout', function(event) {
-                 if (event.target.matches('.modern-rating-input .stars, .modern-rating-input .stars *')) {
-                    const ratingInput = event.target.closest('.modern-rating-input');
-                    if (ratingInput && !ratingInput.contains(event.relatedTarget)) {
-                       ratingInput.querySelectorAll('.stars span').forEach(star => star.classList.remove('hover'));
+                    if(starsContainer) {
+                        starsContainer.setAttribute('data-rating', ratingValue);
                     }
                 }
             });
@@ -3523,18 +3511,42 @@ function generateReviewsHTML(productId) {
 
     return `
     <div class="reviews-section-container">
-        <h2 class="section-title">Customer Reviews</h2>
-
-        <div class="reviews-summary">
-            <div class="reviews-summary-main">
-                <div class="average-rating">${averageRating}</div>
-                <div>
-                    <div class="summary-stars">
-                        ${'★'.repeat(averageRatingRounded)}<span class="unfilled">${'★'.repeat(5 - averageRatingRounded)}</span>
-                    </div>
-                    <div class="total-reviews">Based on ${reviews.length} reviews</div>
+        <div class="reviews-header">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-summary-minimal">
+                <div class="summary-stars">
+                    ${'★'.repeat(averageRatingRounded)}<span class="unfilled">${'★'.repeat(5 - averageRatingRounded)}</span>
                 </div>
+                <div class="total-reviews">${averageRating} out of 5 (${reviews.length} reviews)</div>
             </div>
+            <button class="write-review-btn" onclick="toggleReviewForm()">Write a Review</button>
+        </div>
+
+        <div class="review-form-container" id="review-form-container">
+            <h3 class="form-title">Share Your Experience</h3>
+            <form id="reviewForm">
+                <input type="hidden" name="productId" value="${productId}">
+                <div class="form-group">
+                    <label for="review-name">Name</label>
+                    <input type="text" id="review-name" name="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group modern-rating-input">
+                    <label>Your Rating</label>
+                    <div class="stars" data-rating="0">
+                        <span data-value="5">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="1">★</span>
+                    </div>
+                    <input type="hidden" name="rating" required>
+                </div>
+                <div class="form-group">
+                    <label for="review-comment">Review</label>
+                    <textarea id="review-comment" name="comment" class="form-control" placeholder="What did you like or dislike?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Review</button>
+            </form>
         </div>
 
         <div class="reviews-list" id="reviews-list-container">
@@ -3546,35 +3558,15 @@ function generateReviewsHTML(productId) {
         </div>
 
         ${reviews.length > 2 ? `<button class="reviews-toggle-button" onclick="toggleReviews(this)">Show All Reviews</button>` : ''}
-
-        <div class="review-form-container">
-            <h3 class="form-title">Write a Review</h3>
-            <form id="reviewForm">
-                <input type="hidden" name="productId" value="${productId}">
-                <div class="form-group">
-                    <label for="review-name">Name</label>
-                    <input type="text" id="review-name" name="name" class="form-control" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group modern-rating-input">
-                    <label>Rating</label>
-                    <div class="stars">
-                        <span data-value="5">★</span>
-                        <span data-value="4">★</span>
-                        <span data-value="3">★</span>
-                        <span data-value="2">★</span>
-                        <span data-value="1">★</span>
-                    </div>
-                    <input type="hidden" name="rating" required>
-                </div>
-                <div class="form-group">
-                    <label for="review-comment">Review</label>
-                    <textarea id="review-comment" name="comment" class="form-control" placeholder="Share your experience..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit Review</button>
-            </form>
-        </div>
     </div>
     `;
+}
+
+function toggleReviewForm() {
+    const formContainer = document.getElementById('review-form-container');
+    if (formContainer) {
+        formContainer.classList.toggle('expanded');
+    }
 }
 
 function toggleReviews(button) {
