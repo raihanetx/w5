@@ -393,10 +393,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         .banner-image-container .image-placeholder-text { font-size: 1.4em; font-weight: 600; color: #a0a0a0; }
 
         .category-section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-color); text-align: center; margin-top: 1rem; margin-bottom: 1.5rem; }
-        .categories {
+        .categories.container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
             padding-bottom: 1.5rem;
         }
 
@@ -423,7 +425,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             transition: transform 0.2s ease;
         }
         .category:hover .category-icon-wrapper { transform: scale(1.05); }
@@ -432,7 +434,6 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-color);
-            margin-top: 0.25rem;
         }
 
         .featured-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; margin-top: 2.5rem; }
@@ -1125,7 +1126,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             .about-header h2 { font-size: 1.6rem; }
             .features-grid { grid-template-columns: 1fr; gap: 0.9rem; }
             .category-section-title { font-size: 1.35rem; margin-top: 0.65rem; margin-bottom: 0.9rem; }
-            .category i.category-icon-fa { font-size: 1.6rem; }
+            .category i.category-icon-fa { font-size: 1.4rem; }
             .categories.container {
                 display: flex;
                 overflow-x: auto;
