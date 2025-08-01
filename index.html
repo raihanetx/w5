@@ -1294,6 +1294,168 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             .banner { margin-top: 0.65rem; padding: 0.45rem 0.65rem; }
         }
 
+        /* --- START OF REVIEWS SECTION STYLES --- */
+        .review-rating .fa-star.filled {
+            color: #ffc107; /* Gold color for filled stars */
+        }
+        .reviews-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .review-item {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .review-avatar-wrapper {
+            flex-shrink: 0;
+        }
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .review-avatar-initials {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .review-author-info {
+            flex-grow: 1;
+        }
+        .review-author {
+            font-weight: 600;
+            color: var(--text-color);
+            display: block;
+        }
+        .review-date {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        .review-rating {
+            color: #e0e0e0; /* Color for empty stars */
+        }
+        .review-text {
+            line-height: 1.6;
+            color: #495057;
+            white-space: pre-line;
+        }
+        .see-more-reviews-btn {
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1rem;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .see-more-reviews-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .add-review-form-container {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        .add-review-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        #add-review-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+        #add-review-form label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        #add-review-form input[type="text"],
+        #add-review-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #add-review-form input[type="text"]:focus,
+        #add-review-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(143,135,241,0.2);
+        }
+        .star-rating-input {
+            font-size: 1.8rem;
+            color: #e0e0e0; /* Default empty star color */
+            cursor: pointer;
+        }
+        .star-rating-input .fas {
+             color: #ffc107; /* Gold color for filled stars */
+        }
+        .submit-review-btn {
+            padding: 0.9rem 1.8rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+        .submit-review-btn:hover {
+            filter: brightness(0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(143,135,241,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .review-item {
+                padding: 1rem;
+            }
+            .review-header {
+                align-items: flex-start;
+                position: relative;
+            }
+            .review-avatar-wrapper {
+                margin-right: 0.8rem;
+            }
+            .review-author-info {
+                flex-grow: 1;
+            }
+             .review-rating {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+        /* --- END OF REVIEWS SECTION STYLES --- */
         /* --- END OF FILE style.css --- */
     </style>
 </head>
@@ -2132,7 +2294,41 @@ CapCut Pro নিয়ে এসেছে প্রিমিয়াম সব ফ�
     price: 249,
     image: "product_images/CAPCUT PRO.png",
     isFeatured: true,
-    stock: 15
+    stock: 15,
+    reviews: [
+        {
+            id: 1,
+            author: "Mehedi Hasan",
+            date: "2024-07-28",
+            rating: 5,
+            text: "অসাধারণ একটি সফটওয়্যার! ওয়াটারমার্ক ছাড়া 4K ভিডিও এক্সপোর্ট করা যায়, এটা সবচেয়ে বড় সুবিধা। প্রিমিয়াম সব ফিচার আনলক থাকায় ভিডিও এডিটিং এখন অনেক সহজ হয়ে গেছে।",
+            avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+        },
+        {
+            id: 2,
+            author: "Nusrat Jahan",
+            date: "2024-07-25",
+            rating: 4,
+            text: "খুবই কাজের একটি টুল, বিশেষ করে স্লো-মোশন ফিচারটা দারুণ। তবে ইন্সটলেশন গাইডটা আরেকটু সহজ হলে ভালো হতো। সার্বিকভাবে আমি সন্তুষ্ট।",
+            avatar: null
+        },
+        {
+            id: 3,
+            author: "Sabbir Ahmed",
+            date: "2024-07-22",
+            rating: 5,
+            text: "লাইফটাইম সাপোর্টের বিষয়টা আমার খুব পছন্দ হয়েছে। যেকোনো সমস্যায় দ্রুত সমাধান পাওয়া যায়। এই দামে এমন একটি সার্ভিস পাওয়া আসলেই অবিশ্বাস্য!",
+            avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704e"
+        },
+        {
+            id: 4,
+            author: "Fatima Akter",
+            date: "2024-07-20",
+            rating: 5,
+            text: "প্রিমিয়াম টেমপ্লেটগুলো ব্যবহার করে আমার ভিডিওর মান অনেক উন্নত হয়েছে। বিজ্ঞাপনমুক্ত এডিটিং অভিজ্ঞতাও খুব ভালো। সবাইকে ব্যবহারের জন্য 추천 করছি।",
+            avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704f"
+        }
+    ]
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2211,6 +2407,24 @@ Watermark ছাড়া HD এক্সপোর্ট, হাজারো প্
         { label: `6 MONTH`, price: 49 },
         { label: `1 YEAR`, price: 99 },
         { label: `3 YEARS`, price: 149 }
+    ],
+    reviews: [
+        {
+            id: 5,
+            author: "Anika Tabassum",
+            date: "2024-07-27",
+            rating: 5,
+            text: "Canva Pro ছাড়া আমার চলেই না! ব্যাকগ্রাউন্ড রিমুভার আর ম্যাজিক রিসাইজ ফিচার দুটো আমার সময় অনেক বাঁচিয়ে দেয়। আর প্রিমিয়াম টেমপ্লেটগুলো তো অসাধারণ!",
+            avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704g"
+        },
+        {
+            id: 6,
+            author: "Rakib Hossain",
+            date: "2024-07-26",
+            rating: 4,
+            text: "এক্সেস পেতে কোনো ঝামেলা হয়নি, ১৫ মিনিটের মধ্যেই ইমেইলে টিম ইনভাইট চলে এসেছিলো। ব্যক্তিগত ইমেইলে এক্সেস পাওয়ায় ব্যবহার করতেও সুবিধা হচ্ছে।",
+            avatar: null
+        }
     ]
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
@@ -2980,6 +3194,180 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             setupImageLoading();
         }
 
+function setupReviewFormListeners(productId) {
+    const form = document.getElementById('add-review-form');
+    // Ensure we are attaching listener to the correct form for the current product
+    if (!form || parseInt(form.dataset.productId) !== productId) return;
+
+    const stars = form.querySelectorAll('.star-rating-input .fa-star');
+    const ratingInput = form.querySelector('#review-rating-value');
+    let currentRating = 0;
+
+    const highlightStars = (value) => {
+        stars.forEach(s => {
+            // Use 'fas' for filled star, 'far' for empty star from FontAwesome
+            s.className = `fa-star ${s.dataset.value <= value ? 'fas' : 'far'}`;
+        });
+    };
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            highlightStars(this.dataset.value);
+        });
+
+        star.addEventListener('mouseout', function() {
+            highlightStars(currentRating);
+        });
+
+        star.addEventListener('click', function() {
+            currentRating = this.dataset.value;
+            ratingInput.value = currentRating;
+        });
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const author = this.elements.author.value.trim();
+        const rating = parseInt(ratingInput.value, 10);
+        const text = this.elements.text.value.trim();
+
+        if (!author || !rating || !text) {
+            showToast('Please fill out all fields and provide a rating.', 'error');
+            return;
+        }
+
+        const productIndex = allProductsData.findIndex(p => p.id === productId);
+        if (productIndex === -1) {
+            showToast('Could not find product to add review to.', 'error');
+            return;
+        }
+
+        const product = allProductsData[productIndex];
+
+        const newReview = {
+            id: Date.now(),
+            author: author,
+            date: new Date().toISOString().split('T')[0],
+            rating: rating,
+            text: text,
+            avatar: null
+        };
+
+        if (!product.reviews) {
+            product.reviews = [];
+        }
+        product.reviews.push(newReview);
+
+        // Re-render the reviews section to show the new review
+        renderReviews(product);
+
+        // Update review count on the tab
+        const reviewTabButton = document.querySelector('.tab-link[onclick*="reviewsTab"]');
+        if(reviewTabButton) {
+            reviewTabButton.textContent = `Reviews (${product.reviews.length})`;
+        }
+
+        showToast('Thank you! Your review has been submitted.', 'success');
+    });
+}
+
+function renderReviews(product) {
+    const reviewsTab = document.getElementById('reviewsTab');
+    if (!reviewsTab) return;
+
+    if (!product.reviews || product.reviews.length === 0) {
+        reviewsTab.innerHTML = '<p style="padding: 1rem 0; text-align: center; color: #777;">There are no reviews for this product yet.</p>';
+        return;
+    }
+
+    const reviewsContainer = document.createElement('div');
+    reviewsContainer.className = 'reviews-list';
+
+    const reviewsToShow = 3;
+    const allReviews = product.reviews;
+
+    // Sort reviews by date, newest first
+    allReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    allReviews.forEach((review, index) => {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review-item';
+        if (index >= reviewsToShow) {
+            reviewElement.style.display = 'none';
+        }
+
+        const authorInitials = review.author.split(' ').map(n => n[0]).join('').toUpperCase();
+        const avatarHTML = review.avatar
+            ? `<img src="${review.avatar}" alt="${review.author}" class="review-avatar">`
+            : `<div class="review-avatar-initials"><span>${authorInitials}</span></div>`;
+
+        const ratingHTML = Array(5).fill(0).map((_, i) =>
+            `<i class="fas fa-star ${i < review.rating ? 'filled' : ''}"></i>`
+        ).join('');
+
+        reviewElement.innerHTML = `
+            <div class="review-header">
+                <div class="review-avatar-wrapper">${avatarHTML}</div>
+                <div class="review-author-info">
+                    <span class="review-author">${review.author}</span>
+                    <span class="review-date">${new Date(review.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                <div class="review-rating">${ratingHTML}</div>
+            </div>
+            <p class="review-text">${review.text}</p>
+        `;
+        reviewsContainer.appendChild(reviewElement);
+    });
+
+    reviewsTab.innerHTML = ''; // Clear previous content
+    reviewsTab.appendChild(reviewsContainer);
+
+    if (allReviews.length > reviewsToShow) {
+        const seeMoreBtn = document.createElement('button');
+        seeMoreBtn.className = 'see-more-reviews-btn';
+        seeMoreBtn.textContent = `See All ${allReviews.length} Reviews`;
+        seeMoreBtn.onclick = function(e) {
+            e.preventDefault();
+            const hiddenReviews = reviewsContainer.querySelectorAll('.review-item[style*="display: none"]');
+            hiddenReviews.forEach(review => {
+                review.style.display = 'block';
+            });
+            seeMoreBtn.style.display = 'none';
+        };
+        reviewsTab.appendChild(seeMoreBtn);
+    }
+
+    const formHTML = `
+        <div class="add-review-form-container">
+            <h3 class="add-review-title">Leave a Review</h3>
+            <form id="add-review-form" data-product-id="${product.id}">
+                <div class="form-group">
+                    <label for="review-author-name">Your Name</label>
+                    <input type="text" id="review-author-name" name="author" required placeholder="e.g., John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating-input">
+                        <i class="far fa-star" data-value="1" title="Poor"></i>
+                        <i class="far fa-star" data-value="2" title="Fair"></i>
+                        <i class="far fa-star" data-value="3" title="Good"></i>
+                        <i class="far fa-star" data-value="4" title="Very Good"></i>
+                        <i class="far fa-star" data-value="5" title="Excellent"></i>
+                    </div>
+                    <input type="hidden" name="rating" id="review-rating-value" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Your Review</label>
+                    <textarea id="review-text" name="text" rows="4" required placeholder="Tell us about your experience..."></textarea>
+                </div>
+                <button type="submit" class="submit-review-btn">Submit Review</button>
+            </form>
+        </div>
+    `;
+    reviewsTab.insertAdjacentHTML('beforeend', formHTML);
+    setupReviewFormListeners(product.id);
+}
+
         function showProductDetail(productId) {
     let product = getProductById(productId);
     const detailPageElement = domElements.pages.productDetail;
@@ -3031,11 +3419,12 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             </div>`;
     }
 
-    // Tabs for description
+    // Tabs for description and reviews
     const tabsHTML = `
         <div class="product-info-tabs">
             <div class="tab-headers">
                 <button class="tab-link active" onclick="openTab(event, 'descriptionTab')">Description</button>
+                <button class="tab-link" onclick="openTab(event, 'reviewsTab')">Reviews (${product.reviews ? product.reviews.length : 0})</button>
             </div>
             <div id="descriptionTab" class="tab-content" style="display:block;">
                 <div class="expandable-content">
@@ -3043,6 +3432,9 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
                 </div>
                 <button class="see-more-btn" onclick="toggleSeeMore(this, false)">Show More</button>
                 <button class="see-less-btn" onclick="toggleSeeMore(this, true)">See Less</button>
+            </div>
+            <div id="reviewsTab" class="tab-content" style="display:none;">
+                <!-- Reviews content will be rendered here by renderReviews() -->
             </div>
         </div>`;
 
@@ -3070,6 +3462,8 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
         </div>
         ${tabsHTML}
         ${relatedProductsHTML}`;
+
+    renderReviews(product);
 
     // Event listeners
     const detailDurationSelector = detailPageElement.querySelector(`#duration-detail-${product.id}`);
