@@ -1310,15 +1310,16 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             border-radius: 8px;
             padding: 1.5rem;
         }
-        .review-header {
+        .review-top-section {
             display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
             gap: 1rem;
+            margin-bottom: 0.75rem;
         }
-        .review-avatar-wrapper {
+        .review-left-col {
             flex-shrink: 0;
+        }
+        .review-right-col {
+            flex-grow: 1;
         }
         .review-avatar {
             width: 48px;
@@ -1339,19 +1340,24 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             font-size: 1.2rem;
         }
         .review-author-info {
-            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         .review-author {
             font-weight: 600;
             color: var(--text-color);
-            display: block;
         }
         .review-date {
             font-size: 0.85rem;
             color: #6c757d;
+            margin-top: 0.25rem;
+        }
+        .review-bottom-section {
+            padding-left: calc(48px + 1rem); /* Align with the right column */
         }
         .review-rating {
             color: #e0e0e0; /* Color for empty stars */
+            margin-bottom: 0.75rem;
         }
         .review-text {
             line-height: 1.6;
@@ -1439,20 +1445,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             .review-item {
                 padding: 1rem;
             }
-            .review-header {
-                align-items: flex-start;
-                position: relative;
+            .review-bottom-section {
+                padding-left: 0;
+                margin-top: 1rem;
             }
-            .review-avatar-wrapper {
-                margin-right: 0.8rem;
-            }
-            .review-author-info {
-                flex-grow: 1;
-            }
-             .review-rating {
-                position: absolute;
-                top: 0;
-                right: 0;
+            .review-top-section {
+                margin-bottom: 0;
             }
         }
         /* --- END OF REVIEWS SECTION STYLES --- */
@@ -3306,15 +3304,21 @@ function renderReviews(product) {
         ).join('');
 
         reviewElement.innerHTML = `
-            <div class="review-header">
-                <div class="review-avatar-wrapper">${avatarHTML}</div>
-                <div class="review-author-info">
-                    <span class="review-author">${review.author}</span>
-                    <span class="review-date">${new Date(review.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <div class="review-top-section">
+                <div class="review-left-col">
+                    <div class="review-avatar-wrapper">${avatarHTML}</div>
                 </div>
-                <div class="review-rating">${ratingHTML}</div>
+                <div class="review-right-col">
+                    <div class="review-author-info">
+                        <span class="review-author">${review.author}</span>
+                        <span class="review-date">${new Date(review.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    </div>
+                </div>
             </div>
-            <p class="review-text">${review.text}</p>
+            <div class="review-bottom-section">
+                 <div class="review-rating">${ratingHTML}</div>
+                 <p class="review-text">${review.text}</p>
+            </div>
         `;
         reviewsContainer.appendChild(reviewElement);
     });
