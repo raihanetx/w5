@@ -1417,20 +1417,102 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             }
         }
 
-        /* See More & Add Review Form Styles (unchanged) */
+        /* --- START OF MODIFIED REVIEW FORM STYLES --- */
         .see-more-reviews-btn { display: block; width: 100%; margin-top: 1.5rem; padding: 0.8rem 1rem; background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
         .see-more-reviews-btn:hover { background-color: var(--primary-color); color: white; }
-        .add-review-form-container { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #eee; }
-        .add-review-title { font-size: 1.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 1.5rem; }
-        #add-review-form .form-group { margin-bottom: 0.8rem; }
-        #add-review-form label { display: block; font-weight: 500; margin-bottom: 0.5rem; }
-        #add-review-form input[type="text"], #add-review-form textarea { width: 100%; padding: 0.8rem; border: 1px solid #ced4da; border-radius: 6px; font-size: 1rem; background-color: #fdfdfd; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-        #add-review-form input[type="text"]:focus, #add-review-form textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(143,135,241,0.2); }
-        .star-rating-input { display: flex; gap: 0.3rem; font-size: 1.8rem; color: #e0e0e0; cursor: pointer; }
-        .star-rating-input .fas { color: #ffc107; }
-        .submit-review-btn { padding: 0.9rem 1.8rem; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background-color: var(--primary-color); color: white; border: none; }
-        .submit-review-btn:hover { filter: brightness(0.9); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(143,135,241,0.3); }
-        /* --- END OF REVIEWS SECTION STYLES --- */
+
+        .add-review-form-container {
+            margin-top: 2.5rem;
+            padding: 2rem;
+            border-top: none;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .add-review-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        #add-review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem; /* This will handle gaps between elements */
+        }
+
+        .review-form-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        #add-review-form .form-group {
+            margin-bottom: 0; /* Remove old margin */
+        }
+
+        #add-review-form input[type="text"],
+        #add-review-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #dde2e7;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: inherit;
+        }
+        #add-review-form input[type="text"]::placeholder,
+        #add-review-form textarea::placeholder {
+            color: #8892a0;
+        }
+
+        #add-review-form input[type="text"]:focus,
+        #add-review-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(143, 135, 241, 0.2);
+        }
+
+        #add-review-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 0.2rem;
+            font-size: 1.6rem;
+            color: #d1d5db; /* This will be the color for empty 'far' stars */
+            cursor: pointer;
+        }
+        .star-rating-input .fas { /* this class is added by JS for filled stars */
+            color: #ffc107;
+        }
+
+        .submit-review-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .submit-review-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(143, 135, 241, 0.3);
+        }
+        /* --- END OF MODIFIED REVIEW FORM STYLES --- */
         /* --- END OF FILE style.css --- */
     </style>
 </head>
@@ -3171,32 +3253,32 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
 
 function setupReviewFormListeners(productId) {
     const form = document.getElementById('add-review-form');
-    // Ensure we are attaching listener to the correct form for the current product
     if (!form || parseInt(form.dataset.productId) !== productId) return;
 
-    const stars = form.querySelectorAll('.star-rating-input .fa-star');
+    const ratingContainer = form.querySelector('.star-rating-input');
+    const stars = ratingContainer.querySelectorAll('.fa-star');
     const ratingInput = form.querySelector('#review-rating-value');
     let currentRating = 0;
 
     const highlightStars = (value) => {
         stars.forEach(s => {
-            // Use 'fas' for filled star, 'far' for empty star from FontAwesome
             s.className = `fa-star ${s.dataset.value <= value ? 'fas' : 'far'}`;
         });
     };
+
+    ratingContainer.addEventListener('mouseleave', () => {
+        highlightStars(currentRating);
+    });
 
     stars.forEach(star => {
         star.addEventListener('mouseover', function() {
             highlightStars(this.dataset.value);
         });
 
-        star.addEventListener('mouseout', function() {
-            highlightStars(currentRating);
-        });
-
         star.addEventListener('click', function() {
             currentRating = this.dataset.value;
             ratingInput.value = currentRating;
+            highlightStars(currentRating); // Keep them highlighted after click
         });
     });
 
@@ -3207,7 +3289,7 @@ function setupReviewFormListeners(productId) {
         const text = this.elements.text.value.trim();
 
         if (!author || !rating || !text) {
-            showToast('Please fill out all fields and provide a rating.', 'error');
+            showToast('Please fill all fields and provide a rating.', 'error');
             return;
         }
 
@@ -3231,18 +3313,23 @@ function setupReviewFormListeners(productId) {
         if (!product.reviews) {
             product.reviews = [];
         }
-        product.reviews.push(newReview);
+        // Add to the beginning of the array so it shows up first
+        product.reviews.unshift(newReview);
 
-        // Re-render the reviews section to show the new review
-        renderReviews(product);
+        renderReviews(product); // Re-render the reviews section
 
-        // Update review count on the tab
         const reviewTabButton = document.querySelector('.tab-link[onclick*="reviewsTab"]');
         if(reviewTabButton) {
             reviewTabButton.textContent = `Reviews (${product.reviews.length})`;
         }
 
         showToast('Thank you! Your review has been submitted.', 'success');
+
+        // Reset form
+        form.reset();
+        currentRating = 0;
+        ratingInput.value = 0;
+        highlightStars(0);
     });
 }
 
@@ -3316,28 +3403,30 @@ function renderReviews(product) {
 
     const formHTML = `
         <div class="add-review-form-container">
-            <h3 class="add-review-title">Leave a Review</h3>
+            <h3 class="add-review-title">Leave Your Review</h3>
             <form id="add-review-form" data-product-id="${product.id}">
-                <div class="form-group">
-                    <label for="review-author-name">Your Name</label>
-                    <input type="text" id="review-author-name" name="author" required placeholder="e.g., John Doe">
-                </div>
-                <div class="form-group">
-                    <label>Your Rating</label>
-                    <div class="star-rating-input">
-                        <i class="far fa-star" data-value="1" title="Poor"></i>
-                        <i class="far fa-star" data-value="2" title="Fair"></i>
-                        <i class="far fa-star" data-value="3" title="Good"></i>
-                        <i class="far fa-star" data-value="4" title="Very Good"></i>
-                        <i class="far fa-star" data-value="5" title="Excellent"></i>
+                <div class="review-form-grid">
+                    <div class="form-group form-group-name">
+                        <label for="review-author-name" class="visually-hidden">Your Name</label>
+                        <input type="text" id="review-author-name" name="author" required placeholder="Your Name *">
                     </div>
-                    <input type="hidden" name="rating" id="review-rating-value" value="0">
+                    <div class="form-group form-group-rating">
+                        <label class="visually-hidden">Your Rating</label>
+                        <div class="star-rating-input">
+                            <i class="far fa-star" data-value="1" title="Poor"></i>
+                            <i class="far fa-star" data-value="2" title="Fair"></i>
+                            <i class="far fa-star" data-value="3" title="Good"></i>
+                            <i class="far fa-star" data-value="4" title="Very Good"></i>
+                            <i class="far fa-star" data-value="5" title="Excellent"></i>
+                        </div>
+                        <input type="hidden" name="rating" id="review-rating-value" value="0">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="review-text">Your Review</label>
-                    <textarea id="review-text" name="text" rows="4" required placeholder="Tell us about your experience..."></textarea>
+                    <label for="review-text" class="visually-hidden">Your Review</label>
+                    <textarea id="review-text" name="text" rows="3" required placeholder="Share your experience... *"></textarea>
                 </div>
-                <button type="submit" class="submit-review-btn">Submit Review</button>
+                <button type="submit" class="submit-review-btn">Post Review</button>
             </form>
         </div>
     `;
