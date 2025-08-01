@@ -468,6 +468,18 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             position: relative;
         }
         .product-card-image-container .image-placeholder-text { font-size: 0.9em; font-weight: 600; color: #aaa; }
+        .stock-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
         .stock-out-overlay {
             position: absolute;
             top: 0;
@@ -2122,7 +2134,8 @@ CapCut Pro নিয়ে এসেছে প্রিমিয়াম সব ফ�
     category: "software",
     price: 249,
     image: "product_images/CAPCUT PRO.png",
-    isFeatured: true
+    isFeatured: true,
+    stock: 15
 },
 // ⬇️ Add new product object below this line, inside the array ⬇️
 
@@ -2936,7 +2949,12 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             const skeletonDiv = document.createElement('div'); skeletonDiv.className = 'skeleton'; imageContainer.appendChild(skeletonDiv);
             const placeholderTextSpan = document.createElement('span'); placeholderTextSpan.className = 'image-placeholder-text'; placeholderTextSpan.style.display = 'none'; placeholderTextSpan.textContent = `Image for ${product.name}`; imageContainer.appendChild(placeholderTextSpan);
             if (product.image && product.image !== 'path/to/default-product-image.jpg') { const img = document.createElement('img'); img.src = product.image; img.alt = product.name; img.className = 'image-fade-in'; imageContainer.appendChild(img); setupSingleImageLoading(img); } else { skeletonDiv.style.display = 'none'; placeholderTextSpan.style.display = 'block'; }
-            if (product.stock === 0) {
+            if (product.stock > 0) {
+                const stockBadge = document.createElement('div');
+                stockBadge.className = 'stock-badge';
+                stockBadge.textContent = 'Stock';
+                imageContainer.appendChild(stockBadge);
+            } else if (product.stock === 0) {
                 const stockOutOverlay = document.createElement('div');
                 stockOutOverlay.className = 'stock-out-overlay';
                 stockOutOverlay.textContent = 'Stock Out';
@@ -2954,7 +2972,7 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
             let priceDisplay = `৳${formattedPrice}`;
 
             let durationInfoHTML = '';
-            if (product.category === 'subscription' && Array.isArray(product.durations) && product.durations.length > 0) {
+            if (product.category === 'subscription' && Array.isArray(product.durations) && product.durations.length > 0 && !isFeaturedCard) {
                 durationInfoHTML = `<p class="product-card-duration">Duration: ${product.durations[0].label}</p>`;
             }
             const tempDiv = document.createElement('div'); tempDiv.appendChild(imageContainer);
