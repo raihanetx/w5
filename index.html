@@ -613,9 +613,12 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         .product-info-tabs {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
             border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             padding-top: 2rem;
+            padding-bottom: 2rem;
         }
 
         .tab-headers {
@@ -651,7 +654,7 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
         }
 
         .expandable-content {
-            max-height: 10rem; /* about 6 lines */
+            max-height: 15rem; /* about 8-9 lines */
             overflow: hidden;
             position: relative;
             transition: max-height 0.5s ease-in-out;
@@ -700,8 +703,11 @@ src="https://www.facebook.com/tr?id=482675157669768&ev=PageView&noscript=1"
             color: var(--primary-color);
             font-weight: bold;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.5rem 0;
             margin-top: 0.5rem;
+            width: 100%;
+            text-align: center;
+            display: none; /* Initially hidden */
         }
 
 
@@ -3042,8 +3048,8 @@ Microsoft-এর অফিসিয়াল Activation Key, ইমেইলে ড
                 <div class="expandable-content">
                     <p>${product.longDescription || product.description || 'An exceptional digital product.'}</p>
                 </div>
-                <button class="see-more-btn" onclick="toggleSeeMore(this)">Show More</button>
-                <button class="see-less-btn" onclick="toggleSeeMore(this, true)" style="display:none;">See Less</button>
+                <button class="see-more-btn" onclick="toggleSeeMore(this, false)">Show More</button>
+                <button class="see-less-btn" onclick="toggleSeeMore(this, true)">See Less</button>
             </div>
         </div>`;
 
@@ -3141,14 +3147,21 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-function toggleSeeMore(btn, seeLess = false) {
-    const expandableContent = btn.closest('.tab-content').querySelector('.expandable-content');
-    const seeLessBtn = btn.closest('.tab-content').querySelector('.see-less-btn');
-    if (seeLess) {
+function toggleSeeMore(btn, seeLess) {
+    const tabContent = btn.closest('.tab-content');
+    const expandableContent = tabContent.querySelector('.expandable-content');
+    const seeMoreBtn = tabContent.querySelector('.see-more-btn');
+    const seeLessBtn = tabContent.querySelector('.see-less-btn');
+
+    const isExpanded = expandableContent.classList.contains('expanded');
+
+    if (seeLess) { // "See Less" was clicked
         expandableContent.classList.remove('expanded');
         seeLessBtn.style.display = 'none';
-    } else {
+        seeMoreBtn.style.display = 'block';
+    } else { // "Show More" was clicked
         expandableContent.classList.add('expanded');
+        seeMoreBtn.style.display = 'none';
         seeLessBtn.style.display = 'block';
     }
 }
